@@ -126,6 +126,7 @@ static bool should_move(const int16_t tick_ms, int64_t &last_tick)
 
 static void handle_movement(const int16_t tick_ms, int64_t &last_tick, struct snake &snake)
 {
+    int16_t l = snake.body_segments[0].length();
     if (should_move(tick_ms, last_tick))
     {
         handle_input(snake.cur_direction);
