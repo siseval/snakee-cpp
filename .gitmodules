@@ -1,0 +1,3 @@
+[submodule "curspp"]
+	path = curspp
+	url = git@github.com:siseval/curspp.git
