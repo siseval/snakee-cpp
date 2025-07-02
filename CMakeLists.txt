@@ -6,6 +6,9 @@ add_subdirectory(curspp)
 add_executable(snake
     main.cpp
     snakee.cpp
+    board.cpp
+    movement.cpp
+    draw.cpp
     )
 
 find_package(Curses REQUIRED)

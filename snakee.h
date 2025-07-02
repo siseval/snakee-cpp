@@ -7,6 +7,9 @@
 
 #include "curspp/curspp.h"
 #include "curspp/vec2.h"
+#include "board.h"
+#include "movement.h"
+#include "draw.h"
 
 namespace snakee 
 {
