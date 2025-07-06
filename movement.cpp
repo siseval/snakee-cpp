@@ -37,23 +37,23 @@ static vec2::vec2s direction_to_segment(vec2::vec2s from, vec2::vec2s to)
     return false;
 }
 
-void handle_movement(struct snake &snake)
+void handle_movement(const std::unique_ptr<struct snake> &snake)
 {
-    for (int16_t i = snake.body_segments.size(); i > 0; --i)
+    for (int16_t i = snake->body_segments.size(); i > 0; --i)
     {
         vec2::vec2s move_direction = 
-            direction_to_segment(snake.body_segments[i], snake.body_segments[i - 1]);
+            direction_to_segment(snake->body_segments[i], snake->body_segments[i - 1]);
 
-        snake.body_segments[i] = snake.body_segments[i] + move_direction;
+        snake->body_segments[i] = snake->body_segments[i] + move_direction;
     }
-    snake.body_segments[0] = snake.body_segments[0] + snake.cur_direction;
+    snake->body_segments[0] = snake->body_segments[0] + snake->cur_direction;
 }
 
-void increase_snake_length(struct snake &snake, const int16_t increase)
+void increase_snake_length(const std::unique_ptr<struct snake> &snake, const int16_t increase)
 {
     for (int16_t i = 0; i < increase; ++i)
     {
-        snake.body_segments.push_back(snake.body_segments.back());
+        snake->body_segments.push_back(snake->body_segments.back());
     }
 }
 

@@ -5,6 +5,7 @@
 #include <vector>
 #include <chrono>
 #include <thread>
+#include <memory>
 
 #include "curspp/curspp.h"
 #include "curspp/vec2.h"
@@ -23,6 +24,7 @@ struct stats
     std::int64_t timer_sec;
 };
 
+void snake_end_menu(struct stats stats, const std::unique_ptr<struct board> &board);
 void snake_main_menu();
 void snake_start_game();
 

@@ -16,8 +16,8 @@ struct snake
 };
 
 void handle_input(vec2::Vec2<int16_t> &direction);
-void increase_snake_length(struct snake &snake, const int16_t increase);
-void handle_movement(struct snake &snake);
+void increase_snake_length(const std::unique_ptr<struct snake> &snake, const int16_t increase);
+void handle_movement(const std::unique_ptr<struct snake> &snake);
 bool should_move(const int16_t tick_ms, int64_t &last_tick);
 
 }

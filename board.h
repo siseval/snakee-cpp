@@ -20,10 +20,10 @@ struct board
 };
 
 bool is_in_bounds(const vec2::Vec2<int16_t> pos, const vec2::Vec2<int16_t> board_size);
-void spawn_food(struct board &board);
+void spawn_food(const std::unique_ptr<struct board> &board);
 bool pos_has_food(const vec2::Vec2<int16_t> pos, const std::unordered_set<vec2::Vec2<int16_t>> &food_positions);
 bool screen_size_changed(vec2::Vec2<int16_t> &prev_screen_size);
-void update_board(struct board &board);
+void update_board(const std::unique_ptr<struct board> &board);
 
 }
 
