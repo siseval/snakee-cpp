@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <vector>
 #include <chrono>
+#include <thread>
 
 #include "curspp/curspp.h"
 #include "curspp/vec2.h"
@@ -13,6 +14,14 @@
 
 namespace snakee 
 {
+
+constexpr int32_t POINTS_PER_FOOD = 1;
+
+struct stats
+{
+    int32_t score;
+    std::int64_t timer_sec;
+};
 
 void snake_main_menu();
 void snake_start_game();

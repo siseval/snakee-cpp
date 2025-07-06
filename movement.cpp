@@ -24,7 +24,7 @@ static vec2::vec2s direction_to_segment(vec2::vec2s from, vec2::vec2s to)
     return vec2::vec2s::zero();
 }
 
-static bool should_move(const int16_t tick_ms, int64_t &last_tick)
+ bool should_move(const int16_t tick_ms, int64_t &last_tick)
 {
     const int64_t current_time = std::chrono::duration_cast<std::chrono::milliseconds>
         (std::chrono::system_clock::now().time_since_epoch()).count();
@@ -37,20 +37,16 @@ static bool should_move(const int16_t tick_ms, int64_t &last_tick)
     return false;
 }
 
-void handle_movement(const int16_t tick_ms, int64_t &last_tick, struct snake &snake)
+void handle_movement(struct snake &snake)
 {
-    if (should_move(tick_ms, last_tick))
+    for (int16_t i = snake.body_segments.size(); i > 0; --i)
     {
-        handle_input(snake.cur_direction);
-        for (int16_t i = snake.body_segments.size(); i > 0; --i)
-        {
-            vec2::vec2s move_direction = 
-                direction_to_segment(snake.body_segments[i], snake.body_segments[i - 1]);
+        vec2::vec2s move_direction = 
+            direction_to_segment(snake.body_segments[i], snake.body_segments[i - 1]);
 
-            snake.body_segments[i] = snake.body_segments[i] + move_direction;
-        }
-        snake.body_segments[0] = snake.body_segments[0] + snake.cur_direction;
+        snake.body_segments[i] = snake.body_segments[i] + move_direction;
     }
+    snake.body_segments[0] = snake.body_segments[0] + snake.cur_direction;
 }
 
 void increase_snake_length(struct snake &snake, const int16_t increase)
